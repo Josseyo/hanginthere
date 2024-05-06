@@ -18,7 +18,7 @@ while True:
     print(f"Current Guess: {guess}")
     print(f"Wrong Guesses: {wrong_letters}")
 
-    letter = input("Enter a letter: ").upper()
+    letter = input("\nEnter a letter: ").upper()
 
     # Check if the letter is in the word
     if letter in word:
