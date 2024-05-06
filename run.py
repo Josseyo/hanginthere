@@ -1,5 +1,5 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
+# Hangman
+# Credit Tokyo ed-tech
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import os
@@ -17,10 +17,11 @@ print("HANGMAN/n")
 while True:
     print(f"Current Guess: {guess}")
 
-    letter = input("Please enter a letter: ").upper()
+    letter = input("Enter a letter: ").upper()
 
     # Check if the letter is in the word
     if letter in word:
-        print("GOOD GUESS!")
+        print("CORRECT, GOOD GUESS!")
     else:
-        print("BAD GUESS")
+        print("WRONG, TRY AGAIN")
+
