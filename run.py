@@ -11,11 +11,12 @@ guess = "------"
 wrong_letters = ""
 
 #Print header
-print("HANGMAN/n")
+print("HANGMAN\n")
 
 #Main game loop
 while True:
     print(f"Current Guess: {guess}")
+    print(f"Wrong Guesses: {wrong_letters}")
 
     letter = input("Enter a letter: ").upper()
 
@@ -31,5 +32,5 @@ while True:
                 temp += "-"
         guess = temp
 
-else:
-        print("WRONG, TRY AGAIN")
+    else:
+        wrong_letters += letter
