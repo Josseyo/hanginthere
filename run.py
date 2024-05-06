@@ -21,7 +21,15 @@ while True:
 
     # Check if the letter is in the word
     if letter in word:
-        print("CORRECT, GOOD GUESS!")
-    else:
-        print("WRONG, TRY AGAIN")
+        temp = ""
+        for index in range(len(word)):
+            if letter == word[index]:
+                temp += letter
+            elif guess[index] != "-":
+                temp += guess[index]
+            else:
+                temp += "-"
+        guess = temp
 
+else:
+        print("WRONG, TRY AGAIN")
