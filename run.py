@@ -34,3 +34,9 @@ while True:
 
     else:
         wrong_letters += letter
+    
+    # Check for a winner
+    if word == guess:
+        print("Happy day! You win!")
+        exit()
+
