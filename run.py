@@ -40,3 +40,8 @@ while True:
         print("Happy day! You win!")
         exit()
 
+    # Check for a loser
+    if len(wrong_letters) == 5:
+        print("Sorry, you lose...")
+        exit()
+
