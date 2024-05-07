@@ -47,5 +47,18 @@ while True:
     // //
     """)
         exit()
+    
+    # Print the hangman
+    if len(wrong_letters) == 4:
+        print("""
+    -------
+    |     0
+    |    \\|/
+    |     |
+    |    / \\
+    |
+    |---------""")
+    
+    
 
 
