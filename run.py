@@ -11,12 +11,22 @@ guess = "------"
 wrong_letters = ""
 
 #Print header
-print("HANGMAN\n")
+print("HANGMAN\n")  
+print("""
+-------
+|     
+|    
+|     
+|    
+|----------
+|         |
+|         |
+|         |""")
 
 #Main game loop
 while True:
-    print(f"Current Guess: {guess}")
-    print(f"Wrong Guesses: {wrong_letters}")
+    print(f"\nCurrent Guess: {guess}")
+    print(f"\nWrong Guesses: {wrong_letters}")
 
     letter = input("\nEnter a letter: ").upper()
 
@@ -49,7 +59,7 @@ while True:
         exit()
 
     # Print the hangman
-    
+
     if len(wrong_letters) == 0:
         print("""
     -------
