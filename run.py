@@ -33,15 +33,19 @@ while True:
         guess = temp
 
     else:
+   
         wrong_letters += letter
     
     # Check for a winner
     if word == guess:
         print("Happy day! You win!")
+    # print the hangman
+        print("""
+      o
+    //|//
+      |
+    // //
+    """)
         exit()
 
-    # Check for a loser
-    if len(wrong_letters) == 5:
-        print("Sorry, you lose...")
-        exit()
 
