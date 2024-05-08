@@ -1,13 +1,21 @@
+# python 3.8.1
 # Hangman
 # Credit Tokyo ed-tech
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import os
 os.system ("clear")
+import random
+from words import categories
 
 # Initialize
-word = "YOMACO"
-guess = "------"
+def random_word():
+    category = random.choice(list(categories.keys()))
+    word = random.choice(categories[category])
+    return category.upper(), word.upper()
+
+category, word = random_word()
+guess = "-" * len(word)
 wrong_letters = ""
 
 #Print header
@@ -25,25 +33,23 @@ print("""
 
 #Main game loop
 while True:
-    print(f"\nCurrent Guess: {guess}")
+    print(f"\nCategory: {category}")
+    print(f"Current guess: {guess}")
     print(f"\nWrong Guesses: {wrong_letters}")
 
     letter = input("\nEnter a letter: ").upper()
 
+
     # Check if the letter is in the word
     if letter in word:
         temp = ""
-        for index in range(len(word)):
-            if letter == word[index]:
+        for index, char in enumerate(word):
+            if char == letter:
                 temp += letter
-            elif guess[index] != "-":
-                temp += guess[index]
             else:
-                temp += "-"
+                temp += guess[index]
         guess = temp
-
     else:
-   
         wrong_letters += letter
     
     # Check for a winner
@@ -59,7 +65,6 @@ while True:
         exit()
 
     # Print the hangman
-
     if len(wrong_letters) == 0:
         print("""
     -------
@@ -135,6 +140,8 @@ while True:
     |--  | | --
     |   \\     |
     |    \\    |""")
+        print("Sorry, better luck next time...")
+        exit()
     
     
 
