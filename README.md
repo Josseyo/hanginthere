@@ -58,7 +58,8 @@ The steps for deployment
 * Click on **Deploy**
 
 ## Credit
-* Tokyo Ed-tech
+* Tokyo Ed-tech https://youtu.be/z9YGr0eRfeQ?si=6iU2-78ies0um_DI
+* Adding categories to word bank https://youtu.be/fqstJoazHCQ?si=T1ebkd0VLmCChvoA
 
 -----
 Happy gaming!
