@@ -1,35 +1,85 @@
 
-# Hangman
-
-import os
-import random
-from words import categories
-
-
-def get_user_name():
-    while True:
-        name = input("Enter your name\n.").capitalize()
-        if name.isalpha() and len(name) > 1:
-             return name
-        else:
-            print("Your name can only contain letters")
-            print("and contain at least two letters.\n")
-
-user_name = get_user_name()
-# Initialize/
 def random_word():
     category = random.choice(list(categories.keys()))
     word = random.choice(categories[category])
     return category.upper(), word.upper()
 
-category, word = random_word()
-guess = "-" * len(word)
-wrong_letters = ""
+def generate_blanks(word):
+    return "_" * len(word)
 
-#Print header
-print("Welcome to HANGMAN\n")  
+def get_guess(used_letters):
+    return input("guess: ")
+
+def reveal_letters(blanks, word, guess):
+    blanks = list(blanks)
+    for i, char in enumerate(word):
+        if char == guess:
+            blanks[i] = guess
+    return "".join(blanks) 
+    ...
+
+def draw_guy(lives):
+    print(f"{lives=}")
+
+
+def main():
+    word = random_word()
+    blanks = generate_blank(word)
+    lives = 6
+    used_letter = ""
+
+    while True:
+        print(blanks)
+
+        guess = get_guess(used_letters)
+
+        if guess in word:
+            blanks = reveal_letters(blanks, word, guess
+            ...
+        else:
+            lives -= 1
+            print(draw_guy(lives))
+            used_letters += guess
+
+        if "_" not in blanks:
+            print(word)
+            print("you win")
+            break
+
+        if lives < 1:
+            print(word)
+            print("You lose")
+            break
+
+
+main()
+
+
+
+Hangman
+
+import os
+import random
+from words import categories
+import colorama
+from colorama import init, Fore, Back, Style
+init(autoreset=True)
+
+
+def get_user_name():
+    while True:
+        name = input("Enter your name\n").upper()
+        if name.isalpha() and len(name) > 1:
+            return name
+        else:
+            print(Fore.RED + 'Your name can only contain letters')
+            print(Fore.RED + 'and contain at least two letters.\n')
+
+user_name = get_user_name()
+print(f"Welcome {user_name} to the big hangman day.")
+print("May the luck be with you...")
 print("""
-       -------
+        -------
        |/     
        |    
        |     
@@ -40,12 +90,22 @@ print("""
    |   |         |  
   | |  |         | """)
 
+# Initialize/
+def random_word():
+    category = random.choice(list(categories.keys()))
+    word = random.choice(categories[category])
+    return category.upper(), word.upper()
+
+category, word = random_word()
+guess = "-" * len(word)
+wrong_letters = ""
+
 
 #Main game loop
 while True:
     print(f"\nCategory: {category}")
-    print(f"\nCurrent guess: {guess}")
-    print(f"\nWrong Guesses: {wrong_letters}")
+    print(f"\nCorrect guess: {guess}")
+    print(f"\nWrong Guesses: {wrong_letters}\n")
 
     #Ask player for a letter and validate
     while True:
@@ -106,7 +166,8 @@ while True:
         |     0
         |     |
         |     |
-        |    
+        |    los
+
         |----------
         |         |
         |         |
@@ -147,3 +208,4 @@ while True:
         |   \\     |
         |    \\    |""")
         break
+    """
