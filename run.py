@@ -1,3 +1,6 @@
+import os
+import random
+from words import categories
 
 def random_word():
     category = random.choice(list(categories.keys()))
@@ -8,7 +11,16 @@ def generate_blanks(word):
     return "_" * len(word)
 
 def get_guess(used_letters):
-    return input("guess: ")
+    while True:
+        guess = input("guess")
+        if len(guess) != 1:
+            print("guess must be one character")
+        elif not guess.isalpha():
+            print("guess must be a letter")
+        elif guess in used_letters:
+            print("you've already used that one")
+        else:
+            return guess.upper()
 
 def reveal_letters(blanks, word, guess):
     blanks = list(blanks)
@@ -16,11 +28,9 @@ def reveal_letters(blanks, word, guess):
         if char == guess:
             blanks[i] = guess
     return "".join(blanks) 
-    ...
 
 def draw_guy(lives):
     print(f"{lives=}")
-
 
 def main():
     word = random_word()
@@ -35,7 +45,6 @@ def main():
 
         if guess in word:
             blanks = reveal_letters(blanks, word, guess
-            ...
         else:
             lives -= 1
             print(draw_guy(lives))
@@ -56,15 +65,12 @@ main()
 
 
 
-Hangman
-
 import os
 import random
 from words import categories
 import colorama
 from colorama import init, Fore, Back, Style
 init(autoreset=True)
-
 
 def get_user_name():
     while True:
