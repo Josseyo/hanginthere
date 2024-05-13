@@ -1,18 +1,22 @@
 import random
+import os
 from words import words
+from men import menu
 
 def random_word():
-    return random.choice(words)
+    category = random.choice(list(categories.keys()))
+    word = random.choice(categories[category])
+    return category.upper(), word.upper()
 
 def generate_blanks(word): 
-     """
+    """
     Generates a string of blanks based on the length of the word.
     """
-     blanks = ""
-     for char in word:
+    blanks = ""
+    for char in word:
         if char.isalpha():
             blanks += "_"
-     return blanks
+    return blanks
 
 def get_guess(used_letters):
      """
@@ -46,19 +50,31 @@ def draw_guy(lives):
     print(f"lives remaining: {lives}")
 
 def main():
-    word = random_word()
-    blanks = generate_blanks(word)
-    lives = 6
-    used_letters = ""
-
     while True:
-        print(blanks)
-        print(f"{used_letters=}")
+        category, word = random_word()
+        blanks = generate_blanks(word)
+        lives = 6
+        used_letters = ""
 
-        guess = get_guess(used_letters)
+        while True:
+            os.system("clear")
+            print(category)
+            print(blanks)
+            print(f"{lives=}")
+            print(f"{used_letters=}")
+            draw_guy(lives)
 
-        if guess in word:
-            blanks = reveal_letters(blanks, word, guess)
+            guess = get_guess(used_letters, word)
+            if guess == "SOLVED":
+                break
+                #function for game over summary
+    
+            print(word)
+            print("You win")
+            break
+
+            if guess in word:
+                blanks = reveal_letters(blanks, word, guess)
         else:
             lives -= 1
             print(draw_guy(lives))
