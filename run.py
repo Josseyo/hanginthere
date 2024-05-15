@@ -26,7 +26,7 @@ def get_guess(used_letters):
     Prompts the user to guess a letter and validates the input.
     """
     while True:
-        guess = input("guess: \n")
+        guess = input("Guess: \n").upper()
         if len(guess) != 1:
             print("Guess must be only one letter\n")
         elif not guess.isalpha():
@@ -34,7 +34,7 @@ def get_guess(used_letters):
         elif guess in used_letters:
             print("You've already used that one\n")
         else:
-            return guess.upper()
+            return guess
 
 def reveal_letters(blanks, word, guess):
     """
