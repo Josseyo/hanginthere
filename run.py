@@ -26,13 +26,13 @@ def get_guess(used_letters):
     Prompts the user to guess a letter and validates the input.
     """
     while True:
-        guess = input("guess: ")
+        guess = input("guess: \n")
         if len(guess) != 1:
-            print("guess must be one character")
+            print("Guess must be only one letter\n")
         elif not guess.isalpha():
-            print("guess must be a letter")
+            print("Guess must be a letter\n")
         elif guess in used_letters:
-            print("you've already used that one")
+            print("You've already used that one\n")
         else:
             return guess.upper()
 
@@ -56,11 +56,48 @@ def draw_guy(lives):
 
 def display_status(category, blanks, lives, used_letters):
     os.system("clear")
+    print("Good luck!")
+    print()
+    print("********************")
+    print()
+    print("The category is:")
+    print()
     print(category)
-    print(blanks)
-    print(f"{lives=}")
-    print(f"{used_letters}")
+    print()
+    print("********************")
+    print()
+    print("The word is...")
+    print()
+    print(blanks) 
+    print()
+    print("********************")    
+    print()
+    print(f"Used letters: {used_letters}\n")
+    print()
+    print("********************")
+    print()
+    print(f"{lives=}\n")
+    print()
+    print("********************")
+    print()
     print(draw_guy(lives))
+
+
+def display_instructions():
+    os.system("clear")
+    print("Welcome to Hangman!")
+    print()
+    print("*************************************************************")
+    print()
+    print("-The objective of the game is to guess the hidden word.")
+    print("-You have 6 lives. Each incorrect guess will cost you a life.")
+    print("-Try to guess the word before you run out of lives!")
+    print()
+    print("*************************************************************")
+    print() 
+    print("Press Enter to start the game.")
+    print("      *****                   ")
+    input()
 
 
 def gameplay():
@@ -77,7 +114,8 @@ def gameplay():
         if guess == "SOLVED":
             # function for game over summary
             display_status(category, blanks, lives, used_letters)
-            print("You win")
+            print("You win\n")
+            print("********************")
             break
 
         if guess in word:
@@ -88,18 +126,20 @@ def gameplay():
 
         if "_" not in blanks:
             display_status(category, blanks, lives, used_letters)
-            print("You win")
+            print("Lucky day. You live!\n")
+            print("********************")
             break
 
         if lives < 1:
             blanks = word
             display_status(category, blanks, lives, used_letters)
-            print("You lose")
+            print("So sorry. You lose...\n")
+            print("********************")
             break
     
 
 def play_again():
-    start_over = input('hit y to play again or any other key to quit: ')
+    start_over = input("Hit y to play again or any other key to quit: \n")
     if start_over.lower() == "y":
         main()
     else:
@@ -107,10 +147,12 @@ def play_again():
 
 
 def main():
+    display_instructions()
     category, word = random_word()
     blanks = generate_blanks(word)
     lives = 6
     used_letters = ""
+    #get_guess(used_letters)
     display_status(category, blanks, lives, used_letters)
     gameplay()
     play_again()
