@@ -64,41 +64,42 @@ def display_status(category, blanks, lives, used_letters):
 
 
 def gameplay():
-        category, word = random_word()
-        blanks = generate_blanks(word)
-        lives = 6
-        used_letters = ""
+    category, word = random_word()
+    blanks = generate_blanks(word)
+    lives = 6
+    used_letters = ""
 
-        while True:
+    while True:
+        display_status(category, blanks, lives, used_letters)
+
+        guess = get_guess(used_letters)
+
+        if guess == "SOLVED":
+            # function for game over summary
             display_status(category, blanks, lives, used_letters)
+            print("You win")
+            break
 
-            guess = get_guess(used_letters)
+        if guess in word:
+            blanks = reveal_letters(blanks, word, guess)
+        else:
+            lives -= 1
+            used_letters += guess
 
-            if guess == "SOLVED":
-                # function for game over summary
-                display_status(category, blanks, lives, used_letters)
-                print("You win")
-                break
+        if "_" not in blanks:
+            display_status(category, blanks, lives, used_letters)
+            print("You win")
+            break
 
-            if guess in word:
-                blanks = reveal_letters(blanks, word, guess)
-            else:
-                lives -= 1
-                used_letters += guess
-
-            if "_" not in blanks:
-                display_status(category, blanks, lives, used_letters)
-                print("You win")
-                break
-
-            if lives < 1:
-                blanks = word
-                display_status(category, blanks, lives, used_letters)
-                print("You lose")
-                break
+        if lives < 1:
+            blanks = word
+            display_status(category, blanks, lives, used_letters)
+            print("You lose")
+            break
     
+
 def play_again():
-    start_over = input('hit y to play again or any other key to exit: ')
+    start_over = input('hit y to play again or any other key to quit: ')
     if start_over.lower() == "y":
         main()
     else:
