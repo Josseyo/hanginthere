@@ -7,11 +7,12 @@ Hang in there is a traditional Hangman and Python terminal game which runs in Co
 
 ## How to play
 
-Play against the computer. A random word is generated and hidden. See if you can guess the hidden word before you run out of guesses and get hung...
+Play against the computer. A random word from a random category is generated and hidden. See if you can guess the hidden word before you run out of lives and get hung...
 
-* Enter a letter...
-* Wrong guess...
-* Correct 
+* The objective of the game is to guess the hidden word.
+* As a hint the category of the word is displayed
+* You have 6 lives. Each incorrect guess will cost you a life.
+* Try to guess the word before you run out of lives!
 
 ## Features
 ### Existing Feautures
@@ -24,7 +25,8 @@ Play against the computer. A random word is generated and hidden. See if you can
 * Input validation
     * You must enter a letter
     * You can not enter same letter twice
-
+    * You can only enter one letter at a time
+    
 ### Future Feautures
 * Allow player to select theme of words
 * Allow player to add words to the library
