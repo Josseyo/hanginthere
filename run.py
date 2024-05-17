@@ -57,19 +57,16 @@ def draw_guy(lives):
 def display_status(category, blanks, lives, used_letters):
     os.system("clear")
     print()
-    print("The category is:")
+    print(f"The category is: {category}")
     print()
-    print(category)
-    print()
-    print("The word is...")
-    print()
-    print(blanks) 
+    print(f"The word is: {blanks}")
     print()
     print(f"Used letters: {used_letters}")
     print()
-    print(f"{lives=}")
+    print(f"Lives left: {lives=}")
     print()
     print(draw_guy(lives))
+    print("***************************")
 
 
 def display_instructions():
