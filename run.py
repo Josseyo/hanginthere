@@ -63,7 +63,7 @@ def display_status(category, blanks, lives, used_letters):
     print()
     print(f"Used letters: {used_letters}")
     print()
-    print(f"Lives left: {lives=}")
+    print(f"{lives=}")
     print()
     print(draw_guy(lives))
     print("***************************")
@@ -125,7 +125,7 @@ def gameplay():
     
 
 def play_again():
-    start_over = input("Hit y to play again or any other key to quit: \n")
+    start_over = input("Hit y to play again or any other key to quit \n")
     if start_over.lower() == "y":
         main()
     else:
