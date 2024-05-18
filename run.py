@@ -138,8 +138,8 @@ def main():
     blanks = generate_blanks(word)
     lives = 6
     used_letters = ""
-    #get_guess(used_letters)
-    display_status(blanks, lives, used_letters)
+    get_guess(used_letters)
+    display_status(category, blanks, lives, used_letters)
     gameplay()
     play_again()
 
