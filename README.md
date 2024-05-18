@@ -28,10 +28,14 @@ Play against the computer. A random word from a random category is generated and
     * You can only enter one letter at a time
     
 ### Future Feautures
-* Allow player to select theme of words
+* Allow player to select the cathegory
 * Allow player to add words to the library
 
-## Data Model...
+## Flowchart
+![flowchart](documents/flowchart.png)
+
+
+## Data Model
 
 This workflow follows the standard hangman game logic, where the player attempts to guess the hidden word by guessing one letter at a time. The game continues until the player either correctly guesses the word or runs out of lives.
 
