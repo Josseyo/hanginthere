@@ -15,10 +15,10 @@ def display_instructions():
     print("-Try to guess the word before you run out of lives!")
     print()
     print("*************************************************************")
-    print() 
+    print()
     print("Press Enter to start the game.")
     print("      *****                   ")
-   # input()
+    # input()
 
 
 def random_word():
@@ -52,6 +52,7 @@ def get_guess(used_letters):
             print("You've already used that one\n")
         else:
             return guess
+
 
 def reveal_letters(blanks, word, guess):
     """
@@ -112,7 +113,7 @@ def gameplay():
             print("So sorry. You lose...\n")
             print("* " * 20)
             break
-    
+
 
 def play_again():
     start_over = input("Hit y to play again or any other key to quit \n")
@@ -129,9 +130,11 @@ def main():
     blanks = generate_blanks(word)
     lives = 6
     used_letters = []
-    #display_status(category, blanks, lives, used_letters)
+    # display_status(category, blanks, lives, used_letters)
     gameplay()
     play_again()
+
+
 KeyboardInterrupt
 
 main()
