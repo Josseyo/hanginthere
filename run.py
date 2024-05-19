@@ -95,6 +95,7 @@ def gameplay():
     while True:
         display_status(category, blanks, lives, used_letters)
         guess = get_guess(used_letters)
+        display_status(category, blanks, lives, used_letters)  # Added this line
         if guess == 'SOLVED':
             break
         if guess in word:
@@ -130,7 +131,6 @@ def main():
     blanks = generate_blanks(word)
     lives = 6
     used_letters = []
-    # display_status(category, blanks, lives, used_letters)
     gameplay()
     play_again()
 
