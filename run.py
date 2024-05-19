@@ -5,7 +5,7 @@ from men import men
 
 
 def display_instructions():
-    os.system("clear")
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("Welcome to Hangman!")
     print()
     print("*************************************************************")
