@@ -3,45 +3,34 @@ import os
 from words import categories
 from men import men
 
-
 def display_instructions():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("Welcome to Hangman!")
     print()
-    print("*************************************************************")
+    print("*" * 72)
     print()
     print("-The objective of the game is to guess the hidden word.")
     print("-You have 6 lives. Each incorrect guess will cost you a life.")
     print("-Try to guess the word before you run out of lives!")
     print()
-    print("*************************************************************")
+    print("*" * 72)
     print()
     print("Press Enter to start the game.")
-    print("      *****                   ")
-    # input()
-
+    print("*" * 10)
+    input()  # Wait for Enter to start the game
 
 def random_word():
     category = random.choice(list(categories.keys()))
     word = random.choice(categories[category])
     return category.upper(), word.upper()
 
-
 def generate_blanks(word):
-    """
-    Generates a string of blanks based on the length of the word.
-    """
-    blanks = ""
-    for char in word:
-        if char.isalpha():
-            blanks += "_"
+    """ Generates a string of blanks based on the length of the word. """
+    blanks = "".join("_" if char.isalpha() else char for char in word)
     return blanks
 
-
 def get_guess(used_letters):
-    """
-    Prompts the user to guess a letter and validates the input.
-    """
+    """ Prompts the user to guess a letter and validates the input. """
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
@@ -53,39 +42,22 @@ def get_guess(used_letters):
         else:
             return guess
 
-
 def reveal_letters(blanks, word, guess):
-    """
-    Reveals the letters in the word that match the user's guess.
-    """
-    blanks = list(blanks)
-    for i, char in enumerate(word):
-        if char == guess:
-            blanks[i] = guess
-    return "".join(blanks)
-
+    """ Reveals the letters in the word that match the user's guess. """
+    return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
 
 def draw_guy(lives):
-    """
-    Prints the hangman diagram based on the number of remaining lives.
-    """
+    """ Prints the hangman diagram based on the number of remaining lives. """
     return men()[6 - lives]
 
-
 def display_status(category, blanks, lives, used_letters):
-    os.system("clear")
-    print()
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(f"The category is: {category}")
-    print()
     print(f"The word is: {blanks}")
-    print()
-    print(f"Used letters: {used_letters}")
-    print()
+    print(f"Used letters: {''.join(used_letters)}")
     print(f"{lives=}")
-    print()
     print(draw_guy(lives))
     print("*" * 25)
-
 
 def gameplay():
     category, word = random_word()
@@ -95,7 +67,6 @@ def gameplay():
     while True:
         display_status(category, blanks, lives, used_letters)
         guess = get_guess(used_letters)
-        display_status(category, blanks, lives, used_letters)  # Added this line
         if guess == 'SOLVED':
             break
         if guess in word:
@@ -115,26 +86,20 @@ def gameplay():
             print("* " * 20)
             break
 
-
 def play_again():
-    start_over = input("Hit y to play again or any other key to quit \n")
-    if start_over.lower() == "y":
+    start_over = input("Hit y to play again or any other key to quit \n").lower()
+    if start_over == "y":
         main()
     else:
         exit()
 
-
 def main():
-    display_instructions()
-    input()  # Wait for Enter to start the game
-    category, word = random_word()
-    blanks = generate_blanks(word)
-    lives = 6
-    used_letters = []
-    gameplay()
-    play_again()
+    try:
+        display_instructions()
+        gameplay()
+        play_again()
+    except KeyboardInterrupt:
+        exit()
 
-
-KeyboardInterrupt
-
-main()
+if __name__ == "__main__":
+    main()
