@@ -59,13 +59,17 @@ def display_status(category, blanks, lives, used_letters):
     print(draw_guy(lives))
     print("*" * 25)
 
+
 def gameplay():
     category, word = random_word()
     blanks = generate_blanks(word)
     lives = 6
     used_letters = []
+
+    # Display the category and initial game status
+    display_status(category, blanks, lives, used_letters)
+
     while True:
-        display_status(category, blanks, lives, used_letters)
         guess = get_guess(used_letters)
         if guess == 'SOLVED':
             break
@@ -74,17 +78,21 @@ def gameplay():
         else:
             lives -= 1
             used_letters.append(guess)
+
+        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
+        
+        display_status(category, blanks, lives, used_letters)  # Display updated status
+
         if '_' not in blanks:
-            display_status(category, blanks, lives, used_letters)
             print("Lucky day. You live!\n")
             print("* " * 20)
             break
         if lives < 1:
             blanks = word
-            display_status(category, blanks, lives, used_letters)
             print("So sorry. You lose...\n")
             print("* " * 20)
             break
+
 
 def play_again():
     start_over = input("Hit y to play again or any other key to quit \n").lower()
