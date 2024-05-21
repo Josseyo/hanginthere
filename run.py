@@ -24,10 +24,11 @@ def random_word():
     word = random.choice(categories[category])
     return category.upper(), word.upper()
 
+
 def generate_blanks(word):
     """ Generates a string of blanks based on the length of the word. """
-    blanks = "".join("_" if char.isalpha() else char for char in word)
-    return blanks
+    return "".join("_" if char.isalpha() else char for char in word)
+
 
 def get_guess(used_letters):
     """ Prompts the user to guess a letter and validates the input. """
@@ -65,30 +66,29 @@ def gameplay():
     blanks = generate_blanks(word)
     lives = 6
     used_letters = []
-
-    # Display the category and initial game status
     display_status(category, blanks, lives, used_letters)
 
     while True:
         guess = get_guess(used_letters)
         if guess == 'SOLVED':
+            print(f"The hidden word is: {word}")
             break
         if guess in word:
             blanks = reveal_letters(blanks, word, guess)
         else:
             lives -= 1
             used_letters.append(guess)
-
-        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
         
+        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
         display_status(category, blanks, lives, used_letters)  # Display updated status
 
         if '_' not in blanks:
+            print(f"The hidden word is: {word}")
             print("Lucky day. You live!\n")
             print("* " * 20)
             break
         if lives < 1:
-            blanks = word
+            print(f"The hidden word is: {word}")
             print("So sorry. You lose...\n")
             print("* " * 20)
             break
@@ -102,6 +102,8 @@ def play_again():
         exit()
 
 def main():
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
+
     try:
         display_instructions()
         gameplay()
