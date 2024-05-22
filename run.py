@@ -2,6 +2,10 @@ import random
 import os
 from words import categories
 from men import men
+from colorama import Fore, Style, Back, init
+
+init(autoreset=True)
+
 
 def display_instructions():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -35,11 +39,11 @@ def get_guess(used_letters):
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
-            print("Guess must be only one letter\n")
+            print(Fore.RED + "Guess must be only one letter\n")
         elif not guess.isalpha():
-            print("Guess must be a letter\n")
+            print(Fore.RED + "Guess must be a letter\n")
         elif guess in used_letters:
-            print("You've already used that one\n")
+            print(Fore.RED + "You've already used that one\n")
         else:
             return guess
 
@@ -91,12 +95,12 @@ def gameplay():
 
         if '_' not in blanks:
             print(f"The hidden word is: {word}")
-            print("Lucky day. You live!\n")
+            print(Fore.GREEN + "Lucky day. You live!\n")
             print("* " * 20)
             break
         if lives < 1:
-            print(f"The hidden word is: {word}")
-            print("So sorry. You lose...\n")
+            print(f"The hidden word is: Fore.YELLOW + {word}")
+            print(Fore.RED + "So sorry. You lose...\n")
             print("* " * 20)
             break
 
