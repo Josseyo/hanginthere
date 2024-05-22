@@ -94,12 +94,12 @@ def gameplay():
         display_status(category, blanks, lives, used_letters)  # Display updated status
 
         if '_' not in blanks:
-            print(f"The hidden word is: {word}")
+            print(f"The hidden word is: {Fore.YELLOW + word}")
             print(Fore.GREEN + "Lucky day. You live!\n")
             print("* " * 20)
             break
         if lives < 1:
-            print(f"The hidden word is: Fore.YELLOW + {word}")
+            print(f"The hidden word is: {Fore.YELLOW + word}")
             print(Fore.RED + "So sorry. You lose...\n")
             print("* " * 20)
             break
