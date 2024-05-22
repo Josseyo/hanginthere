@@ -43,9 +43,16 @@ def get_guess(used_letters):
         else:
             return guess
 
-def reveal_letters(blanks, word, guess):
+def reveal_letters(blanks, word, guess, used_letters):
     """ Reveals the letters in the word that match the user's guess. """
-    return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
+    if guess in blanks:
+        print(f"{guess} has already been revealed in the word.")
+        used_letters.append(guess)
+        return blanks
+    else:
+        used_letters.append(guess)
+        return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
+
 
 def draw_guy(lives):
     """ Prints the hangman diagram based on the number of remaining lives. """
@@ -74,7 +81,7 @@ def gameplay():
             print(f"The hidden word is: {word}")
             break
         if guess in word:
-            blanks = reveal_letters(blanks, word, guess)
+            blanks = reveal_letters(blanks, word, guess, used_letters)
         else:
             lives -= 1
             used_letters.append(guess)
