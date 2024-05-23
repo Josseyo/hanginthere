@@ -1,7 +1,3 @@
-from colorama import Fore, Style, Back, init
-
-init(autoreset=True)
-
 def men():
     """
     Print hangman diagram based on remaining lives
