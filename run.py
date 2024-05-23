@@ -73,6 +73,7 @@ def draw_guy(lives):
 def display_status(category, blanks, lives, used_letters):
     os.system('cls' if os.name == 'nt' else 'clear')
 
+    print()
     print(f" The category is: {Fore.YELLOW}{category}")
     print(f" The word is: {Fore.YELLOW}{blanks}")
     print(f" Used letters: {Fore.BLUE}{''.join(used_letters)}")

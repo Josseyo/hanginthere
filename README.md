@@ -27,8 +27,10 @@ Play against the computer. A random word from a random category is generated and
     * You can not enter same letter twice
     * You can only enter one letter at a time
 
-![gameboard](image.png)
-![alt text](image.png)
+**Welcome view**
+This is the first view. It contains instructions how to play the game. Player hits enter to start the game. The word 'enter' is underlined to clearly show the call to action.
+
+![welcome_start](image.png)
 
 You already used that letter...
 ![alt text](image-1.png)
