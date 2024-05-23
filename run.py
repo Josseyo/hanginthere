@@ -10,9 +10,9 @@ init(autoreset=True)
 def display_instructions():
     os.system('cls' if os.name == 'nt' else 'clear')
     print()
-    print("******************* Welcome to Hangman! ********************")
+    print("********************* Welcome to Hangman! **********************")
     print()
-    print("* " * 32)
+    print("* " * 33)
     print("*" * 64)
     print()
     print(" -The objective of the game is to guess the hidden word.")
@@ -20,12 +20,12 @@ def display_instructions():
     print(" -Try to guess the word before you run out of lives!")
     print()
     print("*" * 64)
-    print("* " * 32)
+    print("* " * 33)
     print()
     print(" To start the game press: Enter")
     print("                         ******* ")
-    print("                         * * * * ")
     input()  # Wait for Enter to start the game
+
 
 def random_word():
     category = random.choice(list(categories.keys()))
@@ -43,13 +43,14 @@ def get_guess(used_letters):
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
-            print(Fore.RED + " Guess must be only one letter\n")
+            print(Fore.RED + "  Guess must be only one letter\n")
         elif not guess.isalpha():
-            print(Fore.RED + " Guess must be a letter\n")
+            print(Fore.RED + "  Guess must be a letter\n")
         elif guess in used_letters:
-            print(Fore.RED + " You've already used that one\n")
+            print(Fore.RED + "  You've already used that one\n")
         else:
             return guess
+
 
 def reveal_letters(blanks, word, guess, used_letters):
     """ Reveals the letters in the word that match the user's guess. """
@@ -59,23 +60,26 @@ def reveal_letters(blanks, word, guess, used_letters):
         return blanks
     else:
         used_letters.append(guess)
-        return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
+
+
+return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
 
 
 def draw_guy(lives):
     """ Prints the hangman diagram based on the number of remaining lives. """
     return men()[6 - lives]
 
+
 def display_status(category, blanks, lives, used_letters):
     os.system('cls' if os.name == 'nt' else 'clear')
-   
-    print(f"The category is: {Fore.YELLOW}{category}")
-    print(f"The word is: {Fore.YELLOW}{blanks}")
-    print(f"Used letters: {Fore.BLUE}{''.join(used_letters)}")
-    print(f"Lives: {Fore.GREEN}{lives}")
-   
+
+    print(f" The category is: {Fore.YELLOW}{category}")
+    print(f" The word is: {Fore.YELLOW}{blanks}")
+    print(f" Used letters: {Fore.BLUE}{''.join(used_letters)}")
+    print(f" Lives: {Fore.GREEN}{lives}")
+
     print(draw_guy(lives))
-    print("* " * 15)
+    print("* " * 18)
 
 
 def gameplay():
@@ -95,30 +99,29 @@ def gameplay():
         else:
             lives -= 1
             used_letters.append(guess)
-        
+
         os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
         display_status(category, blanks, lives, used_letters)  # Display updated status
 
         if '_' not in blanks:
-            print(f"The word is: {Fore.YELLOW + word}\n")
+            print(f" The word is: {Fore.YELLOW + word}\n")
             print(Fore.GREEN + "Lucky day. You live!\n")
-            print("*" * 30)
-            print("* " * 15)
+            print("* " * 25)
             break
         if lives < 1:
-            print(f"The word is: {Fore.YELLOW + word}\n")
-            print(Fore.RED + "So sorry. You lose...\n")
-            print("*" * 30)
-            print("* " * 15)
+            print(f" The word is: {Fore.YELLOW + word}\n")
+            print(Fore.RED + " So sorry. You lose...\n")
+            print("* " * 25)
             break
 
 
 def play_again():
-    start_over = input(Fore.GREEN + "Hit y to play again! \n").upper()
+    start_over = input(Fore.GREEN + " Hit 'y' to play again! Or any other key to quit.\n").lower()
     if start_over == "y":
         main()
     else:
         exit()
+
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
@@ -130,5 +133,7 @@ def main():
     except KeyboardInterrupt:
         exit()
 
+
 if __name__ == "__main__":
+
     main()
