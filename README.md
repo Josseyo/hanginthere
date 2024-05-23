@@ -26,7 +26,25 @@ Play against the computer. A random word from a random category is generated and
     * You must enter a letter
     * You can not enter same letter twice
     * You can only enter one letter at a time
-    
+
+![gameboard](image.png)
+![alt text](image.png)
+
+You already used that letter...
+![alt text](image-1.png)
+
+It must be only one letter...
+![alt text](image-2.png)
+
+It must be a letter...
+![alt text](image-3.png)
+
+You lose...
+![alt text](image-4.png)
+
+You win...
+![alt text](image-5.png)
+
 ### Future Feautures
 * Allow player to select the cathegory
 * Allow player to add words to the library
@@ -75,15 +93,33 @@ This workflow follows the standard hangman game logic, where the player attempts
 **Validator Testing:**
 * PEP8
 
-### Bugs
+### Bugs & Fixes
 **Solved bugs**
 * Split up functions
 * Organise and chain functions
 * Passing parameters where necessary
 
-**Remaining bugs**
-* You should not be able to enter the same letter twice. The validation of not entering the same letter twice is not working correctly. Although even if you use a wrong letter several times, you will only lose one life. Therefore, the outcome of the game is not affected by this bug.
+**Fixes**
+* Add colorama
+* Give a general feedback message for guessing the same letter that has already been releived in the hidden word
 
+**Remaining issues**
+* Clear issue in Heroku terminal. A valid enter (a letter that has not been used before) after an invalid enter (= more than one letter, a letter that has been used before, or a character that is not a letter, e.g. a number). 
+
+The issue does not affect the usability since the extra The repetative lines don't affect the usability since they appear outside the terminal window. To see them you have to scroll to the top which would not be the common instinct/behaviour since the visible view covers the gameboard and everything the player needs.
+An invalid guess is:
+
+a letter that has been used before,
+a double letter,
+a number or other character which is not a letter
+
+The issue does not appear in the gitpod terminal. It only shows up when it's deployed to Heroku. And it's only visible if you scroll to the top of the window. Otherwise it will not be noticed, since the rows are added "outside" the vie w.
+
+* CI Python Linter shows: W291 trailing whitespace in men.py file. Left it with purpose since I want some space in the left margin.
+* CI Python Linter shows:
+   * 65: E501 line too long (91 > 79 characters)
+   * 104: E501 line too long (87 > 79 characters)
+   * 119: E501 line too long (98 > 79 characters)
 
 ## Deployment
 The steps for deployment
