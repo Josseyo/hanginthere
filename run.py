@@ -55,7 +55,7 @@ def get_guess(used_letters):
 def reveal_letters(blanks, word, guess, used_letters):
     """ Reveals the letters in the word that match the user's guess. """
     if guess in blanks:
-        print(f"{guess} has already been revealed in the word.")
+        print(f" {guess} has already been revealed in the word.")
         used_letters.append(guess)
         return blanks
     else:
