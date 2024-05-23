@@ -9,18 +9,22 @@ init(autoreset=True)
 
 def display_instructions():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("Welcome to Hangman!")
     print()
-    print("*" * 72)
+    print("******************* Welcome to Hangman! ********************")
     print()
-    print("-The objective of the game is to guess the hidden word.")
-    print("-You have 6 lives. Each incorrect guess will cost you a life.")
-    print("-Try to guess the word before you run out of lives!")
+    print("* " * 32)
+    print("*" * 64)
     print()
-    print("*" * 72)
+    print(" -The objective of the game is to guess the hidden word.")
+    print(" -You have 6 lives. Each incorrect guess will cost you a life.")
+    print(" -Try to guess the word before you run out of lives!")
     print()
-    print("Press Enter to start the game.")
-    print("*" * 10)
+    print("*" * 64)
+    print("* " * 32)
+    print()
+    print(" To start the game press: Enter")
+    print("                         ******* ")
+    print("                         * * * * ")
     input()  # Wait for Enter to start the game
 
 def random_word():
@@ -39,11 +43,11 @@ def get_guess(used_letters):
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
-            print(Fore.RED + "Guess must be only one letter\n")
+            print(Fore.RED + " Guess must be only one letter\n")
         elif not guess.isalpha():
-            print(Fore.RED + "Guess must be a letter\n")
+            print(Fore.RED + " Guess must be a letter\n")
         elif guess in used_letters:
-            print(Fore.RED + "You've already used that one\n")
+            print(Fore.RED + " You've already used that one\n")
         else:
             return guess
 
@@ -64,12 +68,14 @@ def draw_guy(lives):
 
 def display_status(category, blanks, lives, used_letters):
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"The category is: {category}")
-    print(f"The word is: {blanks}")
-    print(f"Used letters: {''.join(used_letters)}")
-    print(f"{lives=}")
+   
+    print(f"The category is: {Fore.YELLOW}{category}")
+    print(f"The word is: {Fore.YELLOW}{blanks}")
+    print(f"Used letters: {Fore.BLUE}{''.join(used_letters)}")
+    print(f"Lives: {Fore.GREEN}{lives}")
+   
     print(draw_guy(lives))
-    print("*" * 25)
+    print("* " * 15)
 
 
 def gameplay():
@@ -82,7 +88,7 @@ def gameplay():
     while True:
         guess = get_guess(used_letters)
         if guess == 'SOLVED':
-            print(f"The hidden word is: {word}")
+            print(f"The word is: {word}")
             break
         if guess in word:
             blanks = reveal_letters(blanks, word, guess, used_letters)
@@ -94,19 +100,21 @@ def gameplay():
         display_status(category, blanks, lives, used_letters)  # Display updated status
 
         if '_' not in blanks:
-            print(f"The hidden word is: {Fore.YELLOW + word}")
+            print(f"The word is: {Fore.YELLOW + word}\n")
             print(Fore.GREEN + "Lucky day. You live!\n")
-            print("* " * 20)
+            print("*" * 30)
+            print("* " * 15)
             break
         if lives < 1:
-            print(f"The hidden word is: {Fore.YELLOW + word}")
+            print(f"The word is: {Fore.YELLOW + word}\n")
             print(Fore.RED + "So sorry. You lose...\n")
-            print("* " * 20)
+            print("*" * 30)
+            print("* " * 15)
             break
 
 
 def play_again():
-    start_over = input("Hit y to play again or any other key to quit \n").lower()
+    start_over = input(Fore.GREEN + "Hit y to play again! \n").upper()
     if start_over == "y":
         main()
     else:
