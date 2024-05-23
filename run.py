@@ -62,7 +62,7 @@ def reveal_letters(blanks, word, guess, used_letters):
         used_letters.append(guess)
 
 
-return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
+    return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
 
 
 def draw_guy(lives):
