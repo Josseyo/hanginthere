@@ -82,7 +82,8 @@ def reveal_letters(blanks, word, guess, used_letters):
     else:
         used_letters.append(guess)
 
-    return "".join(char if char.upper() == guess else blanks[i] for i, char in enumerate(word))
+    return "".join(char if char.upper() == guess
+                   else blanks[i] for i, char in enumerate(word))
 
 
 def draw_guy(lives):
@@ -153,7 +154,9 @@ def gameplay():
 
 def play_again():
     """ Prompts the user to play the game again or quit."""
-    start_over = input(Fore.GREEN + " Hit 'y' to play again! Or any other key to quit.\n").lower()
+    start_over = input(
+        Fore.GREEN + " Hit 'y' to play again!"
+        " Or any other key to quit.\n").lower()
     if start_over == "y":
         main()
     else:

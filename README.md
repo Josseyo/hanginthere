@@ -5,6 +5,8 @@
 # Hang in there...
 Hang in there is a traditional Hangman and Python terminal game which runs in Code Institute mock terminal on Heroku
 
+![over_view](image.png)
+
 ## How to play
 
 Play against the computer. A random word from a random category is generated and hidden. See if you can guess the hidden word before you run out of lives and get hung...
@@ -23,105 +25,95 @@ Play against the computer. A random word from a random category is generated and
 - Provides clear instructions and feedback
 - Provides the ability to play again
 
-### Existing Feautures
 
-* Random word selection
-* Play against computer
-* Accept user input
-* Maintains guessed letters
-* Maintains correct and wrong guesses
-* Input validation
-    * You must enter a letter
-    * You can not enter same letter twice
-    * You can only enter one letter at a time
-
-**Welcome view**
+### Welcome view
 This is the first view. It contains instructions how to play the game. Player hits enter to start the game. The word 'enter' is underlined to clearly show the call to action.
 
-![welcome_start](image.png)
+![welcome_start](documents/welcome_start.png)
 
-**The gameboard view**
+### The gameboard view
 The game status summry is shown at the top and contains
    * The category for the hidden word is shown as a hint for the player. The category is written in yellow 
    * The hidden words letters are replaced with yellow blanks
-   * A list of the used letters are shown in blue
+   * A list of the used letters are shown in red to remind the user which letters they have already used to avoid guessing the same letter again
    * The number of remaing lives are shown with the number i green
-   * At the beginning of the gme the hangman is placed to the left waiting for his destiny. Moving one bodypart at a time for every wrong letter.
+   * At the beginning of the game the man is placed to the left waiting for his destiny. Moving one bodypart at a time for every wrong letter.
 
-![gameboard](image.png)
+![gameboard](documents/gameboard.png)
+![alt text](image.png)
 
-![status_summary](image-1.png)
+![status_summary]()
 
-**You already used that letter**
+### Used letter
+Guessed letters are listed in red so that the user can see which letters they have already tried.
+If guess is incorrect, you lose one life
+If guess is correct, it replaces the yellow blank with a yellow letter
+![incorrect_guess](image-1.png)
+
+### You already used that letter
 Error message in red to pay attention to already used letter. 
 
-![already_used](image.png)
+![already_used](documents/already_used.png)
 
-**It must be only 'one' letter**
+### It must be only 'one' letter
 The warning message is printed in red to pay attention
 
-![only_one_letter](image-1.png)
+![one_letter_only](documents/one_letter_only.png)
 
-**It must be a 'letter'**
+### It must be a 'letter'
 The warning message is printed in red to pay attention
 
-![must_be_letter](image-2.png)
+![must_be_letter](documents/must_be_letter.png)
 
-**You have already used **
-
-![already_used](image-1.png)
-
-**You lose...**
+### You lose...
 You lose is printed in red as if you are dead.
-![you_lose](image.png)
 
-**You win!**
-You win is printed in green as if you are free to go.
+![you_lose](documents/you_lose.png)
 
-![you_win](image.png)
+### You live!
+You live is printed in green as if you are free to go.
 
-**Play again or quit**
+![you_win](documents/you_live.png)
+
+### Play again or quit
 Player can chose to play again by pressing 'y' or any other letter to end the game. The message is printed in green as the preffered action. 
 
-![play_again](image.png)
+![play_again](documents/play_again.png.png)
 
 ### Future Feautures
 * Allow player to select the cathegory
 * Allow player to add words to the library
 
 ## Flowchart
-![flowchart](documents/flowchart.png)
-
-
-## Data Model
 
 This workflow follows the standard hangman game logic, where the player attempts to guess the hidden word by guessing one letter at a time. The game continues until the player either correctly guesses the word or runs out of lives.
 
-1. **Display Instructions**:
-   - The `display_instructions()` function is called at the beginning of the `main()` function.
-   - This function clears the terminal, displays the welcome message and instructions for the game, and waits for the user to press Enter to start the game.
+![flowchart](documents/flowchart.png)
 
-2. **Start a New Game**:
-   - The `main()` function is called, which starts a new game.
-   - It calls the `random_word()` function to select a random category and word.
-   - It generates the blanks for the word using the `generate_blanks()` function.
-   - It initializes the game state with 6 lives and an empty list of used letters.
-   - It calls the `display_status()` function to display the current state of the game.
 
-3. **Gameplay Loop**:
-   - The `gameplay()` function is called, which starts the main gameplay loop.
-   - Inside the loop, the `display_status()` function is called to update the game display.
-   - The `get_guess()` function is called to prompt the user for a guess and validate the input.
-   - If the user guesses the "SOLVED" word, the game is won, and the loop is broken.
-   - If the user's guess is in the word, the `reveal_letters()` function is called to update the blanks.
-   - If the user's guess is not in the word, the number of lives is decremented, and the guess is added to the list of used letters.
-   - If the user has guessed all the letters in the word, the game is won, and the loop is broken.
-   - If the user runs out of lives, the game is lost, and the loop is broken.
+## Code functionality
 
-4. **Game Over**:
-   - After the gameplay loop is broken, the `display_status()` function is called one last time to display the final game state.
-   - Depending on the outcome (win or lose), a message is printed and displayed
-   - The `play_again()` function is called, which prompts the user to play again or quit the game.
+1. The code starts by importing the necessary modules: `random` for generating random words, `os` for clearing the screen, `categories` and `men` from custom modules, and `colorama` for adding color to the output.
+
+2. The `display_instructions()` function prints the instructions and rules of the game, waiting for the user to press Enter to start.
+
+3. The `random_word()` function selects a random word and its category from the `categories` dictionary.
+
+4. The `generate_blanks()` function creates a string of underscores and non-alphabetic characters based on the length of the word.
+
+5. The `get_guess()` function prompts the user to guess a letter and validates the input, ensuring it's a single alphabetic character and has not been used before.
+
+6. The `reveal_letters()` function updates the blanks in the word with the correctly guessed letters.
+
+7. The `draw_guy()` function prints the hangman diagram based on the number of remaining lives.
+
+8. The `display_status()` function clears the screen and displays the current game status, including the category, the word (with blanks), the used letters, and the remaining lives.
+
+9. The `gameplay()` function is the main game loop. It generates a random word and category, initializes the game state, and then enters a loop where the user guesses letters. The function updates the game state, displays the status, and checks for a win or loss condition.
+
+10. The `play_again()` function prompts the user to play again or quit the game.
+
+11. The `main()` function calls the `display_instructions()`, `gameplay()`, and `play_again()` functions to run the game.
 
 
 ## Testing
@@ -175,8 +167,9 @@ The steps for deployment
 ## Credit
 * Tokyo Ed-tech https://youtu.be/z9YGr0eRfeQ?si=6iU2-78ies0um_DI
 * Adding categories to word bank https://youtu.be/fqstJoazHCQ?si=T1ebkd0VLmCChvoA
+* Adding colorama to add colors https://www.youtube.com/watch?v=Yq5tL6be0Yk 
 * Code Institute LMS
-* 
+* w3schools https://www.w3schools.com/python/
 
 -----
-Happy gaming!
+Hang in there! Good luck!
