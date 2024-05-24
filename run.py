@@ -168,6 +168,7 @@ def play_again():
     if start_over == "y":
         main()
     else:
+        print(Fore.YELLOW + "\n Welcome back! See you next time.")
         exit()
 
 
@@ -186,6 +187,8 @@ def main():
         gameplay()
         play_again()
     except KeyboardInterrupt:
+        print(Fore.YELLOW + "\n Welcome back! See you next time.")
+
         exit()
 
 
