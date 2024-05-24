@@ -64,11 +64,11 @@ def get_guess(used_letters):
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
-            print(Fore.RED + "  Guess must be only one letter\n")
+            print(Fore.RED + "  Please enter only one letter.\n")
         elif not guess.isalpha():
-            print(Fore.RED + "  Guess must be a letter\n")
+            print(Fore.RED + "  Oops! That's not a letter. Please enter a valid letter.\n")
         elif guess in used_letters:
-            print(Fore.RED + "  You've already used that one\n")
+            print(Fore.RED + "  Oops! You've already used that letter. Try again!\n")
         else:
             return guess
 
@@ -112,7 +112,7 @@ def display_status(category, blanks, lives, used_letters):
     print(f" The category is: {Fore.YELLOW}{category}")
     print(f" The word is: {Fore.YELLOW}{blanks}")
     print(f" Used letters: {Fore.RED}{''.join(used_letters)}")
-    print(f" Lives: {Fore.GREEN}{lives}")
+    print(f" Lives left: {Fore.GREEN}{lives}")
 
     print(draw_guy(lives))
     print("* " * 25)

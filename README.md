@@ -1,7 +1,9 @@
 **May 2024**
 
 # Hang in There...
-Hang in There is a traditional Hangman and Python terminal game which runs in the Code Institute mock terminal on Heroku.
+Hang in There is a traditional Hangman and Python terminal game which runs in the Code Institute mock terminal on Heroku. 
+
+Link to the live version of this game https://hangin-25c7e5ea0690.herokuapp.com/
 
 ![start](documents/start.png)
 
@@ -16,56 +18,46 @@ Play against the computer. A random word from a random category is generated and
 
 ## Features
 
-- Random word selection from a random category selection from predefined lists of categories
-- Keeps track of used letters and remaining lives
-- Displays the current state of the game, including the category, the word (with blanks), the used letters, and the remaining lives
-- Provides clear instructions and feedback
-- Provides the ability to play again
-
 ### Welcome View
-This is the first view. It contains instructions on how to play the game. The player hits Enter to start the game. The word 'Enter' is underlined to clearly show the call to action.
+This is the first view. It contains instructions on how to play the game. The player hits Enter to start the game. The word 'Enter' is underlined to draw attention to start the game.
 
 ![welcome_start](documents/welcome_start.png)
 
 ### The Gameboard View
-The game status summary is shown at the top and contains:
-   * The category for the hidden word is shown as a hint for the player. The category is written in yellow.
+The game status summary is shown and updated after each turn:
+   * The category for the hidden word is shown as a hint for the player
+   * The category is written in yellow.
    * The hidden word's letters are replaced with yellow blanks.
-   * A list of the used letters are shown in red to remind the user which letters they have already used to avoid guessing the same letter again.
+   * A list of the used letters printed in red to clearly show which letters that have already been used and can't be guessed again
    * The number of remaining lives are shown in green.
-   * At the beginning of the game, the man is placed to the left, waiting for his destiny. One body part is added for every wrong letter.
+   * The man is placed to the left, waiting for his destiny. One body part and one life is lost when player guesses a wrong letter
 
 ![gameboard](documents/gameboard.png)
 
-### Used Letters
-Guessed letters are listed in red so that the user can see which letters they have already tried.
-If the guess is incorrect, the user loses one life.
-If the guess is correct, it replaces the yellow blank with a yellow letter.
+### Oops! You've already used that letter. Try again!
 
-![incorrect_guess](documents/image-1.png)
-
-### You Already Used That Letter
-Error message in red to pay attention to an already used letter.
+Error message in red to draw the player's attention.
 
 ![already_used](documents/already_used.png)
 
-### It Must Be Only 'One' Letter
-The warning message is printed in red to pay attention.
+### Please enter only one letter
+
+The warning message is printed in red to convey the importance of the message.
 
 ![one_letter_only](documents/one_letter_only.png)
 
-### It Must Be a 'Letter'
-The warning message is printed in red to pay attention.
+### Oops! That's not a letter. Please enter a valid letter
+The warning message is printed in red to alert the player.
 
 ![must_be_letter](documents/must_be_letter.png)
 
-### You Lose...
-"You lose" is printed in red, as if you are dead.
+### GAME OVER
+So sorry! You lose... is printed in red to emphasize the loss.
 
 ![you_lose](documents/you_lose.png)
 
 ### You Live!
-"You live" is printed in green, as if you are free to go.
+"You live" is printed in green, to emphasizes you are free to go.
 
 ![you_win](documents/you_live.png)
 
@@ -75,10 +67,10 @@ The player can choose to play again by pressing 'y' or any other letter to end t
 ![play_again](documents/play_again.png)
 
 ### Welcome Back
-A welcome back message is displayed when the user decides to quit the game, providing a friendly ending experience.
+A welcome back message is displayed when the player decides to quit the game, providing a friendly ending experience.
 
 ### Future Features
-* Allow the player to select the category
+* Allow the player to select a category
 * Allow the player to add words to the library
 
 ## Flowchart
@@ -112,33 +104,28 @@ This workflow follows the standard hangman game logic, where the player attempts
 11. The `main()` function calls the `display_instructions()`, `gameplay()`, and `play_again()` functions to run the game.
 
 ## Testing
+
 **Manually Tested:**
 * Code validated through PEP8 linter without issues
 * Tested in my Gitpod terminal
 * Tested in my (Code Institute) Heroku terminal
 
-Feedback messages work without issues.
+**Feedback messages work without issues**
 
-![feedback_messages](documents/image-1.png)
-
-**Validator Testing:**
-* PEP8
+![feedback_messages](documents/feedback_message.png)
 
 ### Bugs & Fixes
-**Solved Bugs**
-* Split up functions
-* Organized and chained functions
-* Passed parameters where necessary
 
 **Fixes**
+* Split up functionsninto smaller, more manageable functions to improve readability and maintainability.
+* Organized and chained functions. Grouping related functions together and connecting them in a sequential manner to enhance code organization.
+* Passed parameters where necessary to improve flexibility, reduce complexity, and enhance testability.
 * Added Colorama
-* Gave a general feedback message for guessing the same letter that has already been revealed in the hidden word
-* Added a welcome back message in the `play_again()` function when the user chooses to quit the game, as well as in the `main()` function when the user exits the game using the KeyboardInterrupt (Ctrl+C) exception.
+* Add a general feedback message for guessing the same letter that has already been revealed in the hidden word
+* Added a Welcome back message when the user chooses to quit the game
 
 **Unsolved Issue**
-* Clear issue in Heroku terminal. 
-
-The issue does not affect the usability since the repetitive lines don't affect the usability, as they appear outside the terminal window. To see them, you have to scroll to the top, which would not be the common instinct/behavior since the visible view covers the gameboard and everything the player needs.
+* Clear issue in Heroku terminal. The issue does not affect the usability since the repetitive lines don't affect the usability, as they appear outside the terminal window. To see them, you have to scroll to the top, which would not be the common instinct/behavior since the visible view covers the gameboard and everything the player needs.
 
 The issue appears when entering a valid guess (a letter that has not been used before) after an invalid guess. A valid enter, after an invalid enter. An invalid guess is:
 - A letter that has been used before
@@ -150,10 +137,11 @@ The issue does not appear in the Gitpod terminal. It only shows up when it's dep
 ## Deployment
 The steps for deployment:
 
-1. Create a new Heroku app.
-2. Add two buildpacks from the _Settings_ tab. The ordering is as follows:
-   1. `heroku/python`
-   2. `heroku/nodejs`
+* Clone or fork this repository https://github.com/Josseyo/hanginthere.git
+* Create a new Heroku app
+* Add two buildpacks from the _Settings_ tab. Add in this order:
+   1. Python
+   2. NodeJS
 3. Create a _Config Var_ called `PORT`. Set this to `8000`.
 4. Link the Heroku app to your Github repository.
 5. Click on **Deploy**.
