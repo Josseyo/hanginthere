@@ -2,7 +2,7 @@ import random
 import os
 from words import categories
 from men import men
-from colorama import Fore, Style, Back, init
+from colorama import Fore, init
 
 # Initialize colorama for cross-platform color support
 init(autoreset=True)
