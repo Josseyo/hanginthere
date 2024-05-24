@@ -1,3 +1,4 @@
+# Dictionary of animal names
 animals = [
     "tiger",
     "elephant",
@@ -14,6 +15,7 @@ animals = [
     "koala",
 ]
 
+# Dictionary of sport names
 sports = [
     "football",
     "basketball",   
@@ -37,6 +39,7 @@ sports = [
     "cricket"
 ]
 
+# Dictionary of famous song titles
 music = [
     "Bohemian Rhapsody",
     "Billie Jean",
@@ -51,6 +54,7 @@ music = [
     "Thriller",
 ]
 
+# Dictionary of food items
 food = [
     "chocolate",
     "bread",
@@ -64,6 +68,7 @@ food = [
 
 ]
 
+# Dictionary of capital cities
 capitals = [
     "stockholm",
     "london",
@@ -87,6 +92,7 @@ capitals = [
     "bangkok"
 ]
 
+# Dictionary of categories and their corresponding word lists
 categories = {
     "animals": animals,
     "sports": sports,
@@ -94,4 +100,8 @@ categories = {
     "food": food,
     "capitals": capitals,
 }
+"""
+A dictionary that maps category names to their corresponding lists of words.
+This is used to select random words for the Hangman game.
+"""
 

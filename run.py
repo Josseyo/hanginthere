@@ -9,6 +9,12 @@ init(autoreset=True)
 
 
 def display_instructions():
+    """
+    Displays the instructions for the Hangman game.
+    Clears the screen, prints the welcome message,
+    instructions, and waits for the user to press Enter
+    to start the game.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
     print()
     print("********************* Welcome to Hangman! **********************")
@@ -96,7 +102,9 @@ def draw_guy(lives):
 
 def display_status(category, blanks, lives, used_letters):
     """
-    Clears the screen and displays the current game status
+    Clears the screen and displays the current game status,
+    including the category, the word with blanks, the used
+    letters, and the remaining lives.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 

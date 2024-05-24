@@ -1,7 +1,10 @@
 def men():
     """
-    Print hangman diagram based on remaining lives
-    """
+    Print hangman diagram based on remaining lives.
+    Returns:
+        list: A list of ASCII art strings representing the hangman diagram at
+        different stages of the game.
+     """
     return [
         """
         -------
