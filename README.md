@@ -14,10 +14,18 @@ Play against the computer. A random word from a random category is generated and
 * You have 6 lives. Each incorrect guess will cost you a life.
 * Try to guess the word before you run out of lives!
 
+
 ## Features
+
+- Random word selection from a random categoty selection from predefined lists of categories
+- Keeps track of used letters and remaining lives
+- Displays the current state of the game, including the category, the word (with blanks), the used letters, and the remaining lives
+- Provides clear instructions and feedback
+- Provides the ability to play again
+
 ### Existing Feautures
 
-* Random word generator
+* Random word selection
 * Play against computer
 * Accept user input
 * Maintains guessed letters
@@ -32,20 +40,50 @@ This is the first view. It contains instructions how to play the game. Player hi
 
 ![welcome_start](image.png)
 
-You already used that letter...
-![alt text](image-1.png)
+**The gameboard view**
+The game status summry is shown at the top and contains
+   * The category for the hidden word is shown as a hint for the player. The category is written in yellow 
+   * The hidden words letters are replaced with yellow blanks
+   * A list of the used letters are shown in blue
+   * The number of remaing lives are shown with the number i green
+   * At the beginning of the gme the hangman is placed to the left waiting for his destiny. Moving one bodypart at a time for every wrong letter.
 
-It must be only one letter...
-![alt text](image-2.png)
+![gameboard](image.png)
 
-It must be a letter...
-![alt text](image-3.png)
+![status_summary](image-1.png)
 
-You lose...
-![alt text](image-4.png)
+**You already used that letter**
+Error message in red to pay attention to already used letter. 
 
-You win...
-![alt text](image-5.png)
+![already_used](image.png)
+
+**It must be only 'one' letter**
+The warning message is printed in red to pay attention
+
+![only_one_letter](image-1.png)
+
+**It must be a 'letter'**
+The warning message is printed in red to pay attention
+
+![must_be_letter](image-2.png)
+
+**You have already used **
+
+![already_used](image-1.png)
+
+**You lose...**
+You lose is printed in red as if you are dead.
+![you_lose](image.png)
+
+**You win!**
+You win is printed in green as if you are free to go.
+
+![you_win](image.png)
+
+**Play again or quit**
+Player can chose to play again by pressing 'y' or any other letter to end the game. The message is printed in green as the preffered action. 
+
+![play_again](image.png)
 
 ### Future Feautures
 * Allow player to select the cathegory

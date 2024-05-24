@@ -76,7 +76,7 @@ def display_status(category, blanks, lives, used_letters):
     print()
     print(f" The category is: {Fore.YELLOW}{category}")
     print(f" The word is: {Fore.YELLOW}{blanks}")
-    print(f" Used letters: {Fore.BLUE}{''.join(used_letters)}")
+    print(f" Used letters: {Fore.RED}{''.join(used_letters)}")
     print(f" Lives: {Fore.GREEN}{lives}")
 
     print(draw_guy(lives))
@@ -106,7 +106,7 @@ def gameplay():
 
         if '_' not in blanks:
             print(f" The word is: {Fore.YELLOW + word}\n")
-            print(Fore.GREEN + "Lucky day. You live!\n")
+            print(Fore.GREEN + " Lucky day. You live!\n")
             print("* " * 25)
             break
         if lives < 1:
