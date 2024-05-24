@@ -24,7 +24,7 @@ def display_instructions():
     print()
     print(" -The objective of the game is to guess the hidden word.")
     print(" -You have 6 lives. Each incorrect guess will cost you a life.")
-    print(" -Try to guess the word before you run out of lives!")
+    print(" -Try to guess the letters in the hidden word before you run out of lives!")
     print()
     print("*" * 64)
     print("* " * 33)
