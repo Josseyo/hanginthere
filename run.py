@@ -24,8 +24,8 @@ def display_instructions():
     print()
     print(" -The objective of the game is to guess the hidden word.")
     print(" -You have 6 lives. Each incorrect guess will cost you a life.")
-    print(" -Try to guess the letters in
-          the hidden word before you run out of lives!")
+    print(" -Try to guess the letters in the hidden word before"
+          "you run out of lives!")
     print()
     print("*" * 64)
     print("* " * 33)
@@ -67,11 +67,11 @@ def get_guess(used_letters):
         if len(guess) != 1:
             print(Fore.RED + "  Please enter only one letter.\n")
         elif not guess.isalpha():
-            print(Fore.RED + "  Oops! That's not a letter.
-                  Please enter a valid letter.\n")
+            print(Fore.RED + "  Oops! That's not a letter."
+                  "Please enter a valid letter.\n")
         elif guess in used_letters:
-            print(Fore.RED + "  Oops! You've already used that letter.
-                  Try again!\n")
+            print(Fore.RED + "  Oops! You've already used that letter."
+                  "Try again!\n")
         else:
             return guess
 
