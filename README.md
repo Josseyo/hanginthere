@@ -21,7 +21,7 @@ Play against the computer. A random word from a random category is generated and
 ### Welcome View
 This is the first view. It contains instructions on how to play the game. The player hits Enter to start the game. The word 'Enter' is underlined to draw attention to start the game.
 
-![welcome_start](documents/welcome_start.png)
+![welcome](documents/welcome.png)
 
 ### The Gameboard View
 The game status summary is shown and updated after each turn:
@@ -34,22 +34,15 @@ The game status summary is shown and updated after each turn:
 
 ![gameboard](documents/gameboard.png)
 
-### Oops! You've already used that letter. Try again!
+### Feedback/error messages
 
-Error message in red to draw the player's attention.
+* Oops! You've already used that letter. Try again!
+* Please enter only one letter
+* Oops! That's not a letter. Please enter a valid letter
 
-![already_used](documents/already_used.png)
+Messages printed in red to draw the player's attention.
 
-### Please enter only one letter
-
-The warning message is printed in red to convey the importance of the message.
-
-![one_letter_only](documents/one_letter_only.png)
-
-### Oops! That's not a letter. Please enter a valid letter
-The warning message is printed in red to alert the player.
-
-![must_be_letter](documents/must_be_letter.png)
+![feedback](documents/feedback.png)
 
 ### GAME OVER
 So sorry! You lose... is printed in red to emphasize the loss.
@@ -68,6 +61,8 @@ The player can choose to play again by pressing 'y' or any other letter to end t
 
 ### Welcome Back
 A welcome back message is displayed when the player decides to quit the game, providing a friendly ending experience.
+
+![welcome_back](documents/welcome_back.png)
 
 ### Future Features
 * Allow the player to select a category
@@ -112,7 +107,7 @@ This workflow follows the standard hangman game logic, where the player attempts
 
 **Feedback messages work without issues**
 
-![feedback_messages](documents/feedback_message.png)
+![feedback_messages](documents/feedback.png)
 
 ### Bugs & Fixes
 
@@ -120,7 +115,7 @@ This workflow follows the standard hangman game logic, where the player attempts
 * Split up functionsninto smaller, more manageable functions to improve readability and maintainability.
 * Organized and chained functions. Grouping related functions together and connecting them in a sequential manner to enhance code organization.
 * Passed parameters where necessary to improve flexibility, reduce complexity, and enhance testability.
-* Added Colorama
+* Added Colorama to add some colors to the UI
 * Add a general feedback message for guessing the same letter that has already been revealed in the hidden word
 * Added a Welcome back message when the user chooses to quit the game
 
