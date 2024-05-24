@@ -1,11 +1,10 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 **April 2024**
 
 # Hang in there...
 Hang in there is a traditional Hangman and Python terminal game which runs in Code Institute mock terminal on Heroku
 
-![over_view](image.png)
+![start](documents/start.png)
 
 ## How to play
 
@@ -14,7 +13,7 @@ Play against the computer. A random word from a random category is generated and
 * The objective of the game is to guess the hidden word.
 * As a hint the category of the word is displayed
 * You have 6 lives. Each incorrect guess will cost you a life.
-* Try to guess the word before you run out of lives!
+* Try to guess the letters in the hidden word before you run out of lives!
 
 
 ## Features
@@ -40,7 +39,7 @@ The game status summry is shown at the top and contains
    * At the beginning of the game the man is placed to the left waiting for his destiny. Moving one bodypart at a time for every wrong letter.
 
 ![gameboard](documents/gameboard.png)
-![alt text](image.png)
+ 
 
 ![status_summary]()
 
@@ -79,6 +78,9 @@ You live is printed in green as if you are free to go.
 Player can chose to play again by pressing 'y' or any other letter to end the game. The message is printed in green as the preffered action. 
 
 ![play_again](documents/play_again.png.png)
+
+### Welcome back
+A welcome back message is displayed when the user decides to quit the game, providing a friendly ending experience.
 
 ### Future Feautures
 * Allow player to select the cathegory
@@ -122,6 +124,9 @@ This workflow follows the standard hangman game logic, where the player attempts
 * Tested in my gitpod terminal
 * Tested in my (Code Institute) Heroku terminal
 
+Feedback messages work without issues
+![feedback_messages](image-1.png)
+
 **Validator Testing:**
 * PEP8
 
@@ -134,6 +139,7 @@ This workflow follows the standard hangman game logic, where the player attempts
 **Fixes**
 * Add colorama
 * Give a general feedback message for guessing the same letter that has already been releived in the hidden word
+* Added a welcome back message in the play_again() function when the user chooses to quit the game as well as in the main() function when the user exits the game using the KeyboardInterrupt (Ctrl+C) exception.
 
 **Remaining issues**
 * Clear issue in Heroku terminal. A valid enter (a letter that has not been used before) after an invalid enter (= more than one letter, a letter that has been used before, or a character that is not a letter, e.g. a number). 
