@@ -4,6 +4,7 @@ from words import categories
 from men import men
 from colorama import Fore, Style, Back, init
 
+# Initialize colorama for cross-platform color support
 init(autoreset=True)
 
 
@@ -22,24 +23,38 @@ def display_instructions():
     print("*" * 64)
     print("* " * 33)
     print()
+    # Wait for Enter to start the game
     print(" To start the game press: Enter")
     print("                         ******* ")
-    input()  # Wait for Enter to start the game
+    input()
 
 
 def random_word():
+    """
+    Selects a random category and a random word
+    from the categories dictionary. Returns the
+    category and the word in uppercase.
+    """
     category = random.choice(list(categories.keys()))
     word = random.choice(categories[category])
     return category.upper(), word.upper()
 
 
 def generate_blanks(word):
-    """ Generates a string of blanks based on the length of the word. """
+    """
+    Generates a string of blanks based on the length
+    of the word. Non-alphabetic characters are kept
+    as is.
+    """
     return "".join("_" if char.isalpha() else char for char in word)
 
 
 def get_guess(used_letters):
-    """ Prompts the user to guess a letter and validates the input. """
+    """
+    Prompts the user to guess a letter and validates
+    the input. Ensures the guess is a single letter
+    that hasn't been used before.
+    """
     while True:
         guess = input("Guess: \n").upper()
         if len(guess) != 1:
@@ -53,7 +68,13 @@ def get_guess(used_letters):
 
 
 def reveal_letters(blanks, word, guess, used_letters):
-    """ Reveals the letters in the word that match the user's guess. """
+    """
+    -Reveals the letters in the word that match the user's guess.
+    -If the letter has already been revealed, it prints a message
+    and returns the unchanged blanks.
+    -Otherwise, it updates the blanks and adds the guess to the
+    used_letters list.
+    """
     if guess in blanks:
         print(f" {guess} has already been revealed in the word.")
         used_letters.append(guess)
@@ -65,11 +86,17 @@ def reveal_letters(blanks, word, guess, used_letters):
 
 
 def draw_guy(lives):
-    """ Prints the hangman diagram based on the number of remaining lives. """
+    """
+    Prints the hangman diagram based on the number of
+    remaining lives.
+    """
     return men()[6 - lives]
 
 
 def display_status(category, blanks, lives, used_letters):
+    """
+    Clears the screen and displays the current game status
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print()
@@ -79,10 +106,17 @@ def display_status(category, blanks, lives, used_letters):
     print(f" Lives: {Fore.GREEN}{lives}")
 
     print(draw_guy(lives))
-    print("* " * 18)
+    print("* " * 25)
 
 
 def gameplay():
+    """
+    The main game loop.
+    -Selects a random word, initializes the game and then enters a loop
+    where the user guesses letters.
+    -Updates the game state, displays the updated status, and checks for win
+    or loss conditions.
+    """
     category, word = random_word()
     blanks = generate_blanks(word)
     lives = 6
@@ -100,8 +134,10 @@ def gameplay():
             lives -= 1
             used_letters.append(guess)
 
-        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
-        display_status(category, blanks, lives, used_letters)  # Display updated status
+        # Clear the screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+        # Display updated status
+        display_status(category, blanks, lives, used_letters)
 
         if '_' not in blanks:
             print(f" The word is: {Fore.YELLOW + word}\n")
@@ -116,6 +152,7 @@ def gameplay():
 
 
 def play_again():
+    """ Prompts the user to play the game again or quit."""
     start_over = input(Fore.GREEN + " Hit 'y' to play again! Or any other key to quit.\n").lower()
     if start_over == "y":
         main()
@@ -124,7 +161,14 @@ def play_again():
 
 
 def main():
-    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
+    """
+    The entry point of the script.
+    -Clears the screen, calls the display_instructions(), gameplay(),
+    and play_again() functions.
+    -Handles the KeyboardInterrupt exception to exit the script.
+    """
+    # Clear the screen
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     try:
         display_instructions()
